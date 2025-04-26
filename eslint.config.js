@@ -33,7 +33,7 @@ export default tseslint.config(
     files: ['**/*.{ts,tsx}'],
     ...importPlugin.flatConfigs.recommended,
     settings: {
-      'import/internal-regex': '^~/',
+      'import/internal-regex': '[^@/|^@styles/]',
       'import/resolver': {
         node: {
           extensions: ['.ts', '.tsx'],
