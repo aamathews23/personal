@@ -1,0 +1,28 @@
+@use '../variables' as *;
+
+@mixin text-heading-serif-600 {
+  font-family: $noto-serif;
+  font-size: 5rem;
+  font-weight: bold;
+  color: var(--heading-text-color, #{$text-primary});
+}
+
+@mixin text-heading-serif-500 {
+  font-family: $noto-serif;
+  font-size: 4rem;
+  font-weight: bold;
+  color: var(--heading-text-color, #{$text-primary});
+}
+
+@mixin text-heading-serif-400 {
+  font-family: $noto-serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--heading-text-color, #{$text-primary});
+}
+
+@mixin text-body {
+  font-family: $roboto;
+  font-size: 1rem;
+  color: var(--heading-text-color, #{$text-primary});
+}
