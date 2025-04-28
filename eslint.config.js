@@ -5,6 +5,7 @@ import reactPlugin from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import importPlugin from 'eslint-plugin-import';
+import vitestPlugin from '@vitest/eslint-plugin';
 
 export default tseslint.config(
   eslint.configs.recommended,
@@ -43,6 +44,10 @@ export default tseslint.config(
         },
       },
     },
+  },
+  {
+    ...vitestPlugin.configs.recommended,
+    files: ['tests/*'],
   },
   prettierRecommended,
 );

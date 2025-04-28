@@ -24,8 +24,15 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
-      '@styles': path.resolve(__dirname, './app/styles'),
+      '@': path.resolve(__dirname, './app'),
+      '@styles': path.resolve(__dirname, './styles'),
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern',
+      },
     },
   },
 });
