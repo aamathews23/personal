@@ -20,6 +20,8 @@ export default mergeConfig(
         reporter: ['text', 'json-summary', 'json'],
         reportOnFailure: true,
       },
+      globals: true,
+      setupFiles: './tests/setup.ts',
     },
   }),
 );

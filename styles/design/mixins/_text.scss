@@ -21,6 +21,13 @@
   color: var(--heading-text-color, #{$text-primary});
 }
 
+@mixin text-heading-serif-300 {
+  font-family: $noto-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--heading-text-color, #{$text-primary});
+}
+
 @mixin text-body {
   font-family: $roboto;
   font-size: 1rem;

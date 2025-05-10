@@ -1,21 +1,20 @@
 @use '../design' as *;
 
 .index {
-  &__container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 $space-one-x;
+
+  @include media-md-up {
+    padding: 0 $space-two-x;
   }
 
-  &__heading {
-    @include text-heading-serif-600;
-    margin-bottom: 16px;
-  }
-
-  &__description {
-    @include text-body;
+  @include media-lg-up {
+    padding: 0 $space-four-x;
   }
 }
