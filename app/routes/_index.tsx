@@ -1,4 +1,5 @@
 import type { MetaFunction } from '@remix-run/node';
+import { Hero } from '@/components/Hero';
 import classes from '@styles/routes/index.module.scss';
 
 export const meta: MetaFunction = () => {
@@ -7,9 +8,12 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   return (
-    <div className={classes['index__container']}>
-      <h1 className={classes['index__heading']}>Welcome</h1>
-      <p className={classes['index__description']}>Hello Remix!</p>
-    </div>
+    <main className={classes.index}>
+      <Hero
+        preheading="Welcome!"
+        heading="I’m, Aaron Mathews."
+        description="A software engineer, designer, foodie, hockey player and dad."
+      />
+    </main>
   );
 }

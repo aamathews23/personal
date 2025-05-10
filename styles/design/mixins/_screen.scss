@@ -1,0 +1,11 @@
+@mixin media-md-up {
+  @media screen and (width >= 768px) {
+    @content;
+  }
+}
+
+@mixin media-lg-up {
+  @media screen and (width >= 1024px) {
+    @content;
+  }
+}
