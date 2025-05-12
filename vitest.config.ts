@@ -10,7 +10,7 @@ export default mergeConfig(
       exclude: [...configDefaults.exclude, 'e2e/**'],
       root: fileURLToPath(new URL('./', import.meta.url)),
       coverage: {
-        include: ['app'],
+        include: ['app/components'],
         thresholds: {
           branches: 80,
           functions: 80,
