@@ -1,5 +1,5 @@
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
-import type { LinksFunction } from '@remix-run/node';
+import type { LinksFunction } from '@remix-run/cloudflare';
 
 import '@styles/global.css';
 

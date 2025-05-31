@@ -1,7 +1,13 @@
+# remix / node
 node_modules
 
 /.cache
 /build
 .env
 
+# testing
 coverage
+
+# cloudflare
+/.wrangler
+.dev.vars

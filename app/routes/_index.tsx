@@ -1,4 +1,4 @@
-import type { MetaFunction } from '@remix-run/node';
+import type { MetaFunction } from '@remix-run/cloudflare';
 import { Hero } from '@/components/Hero';
 import classes from '@styles/routes/index.module.scss';
 

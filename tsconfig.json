@@ -1,5 +1,6 @@
 {
   "include": [
+    "worker-configuration.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "**/.server/**/*.ts",
@@ -9,7 +10,7 @@
   ],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
-    "types": ["@remix-run/node", "vite/client", "jsdom"],
+    "types": ["vite/client", "jsdom", "@remix-run/cloudflare", "@cloudflare/workers-types"],
     "isolatedModules": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",
