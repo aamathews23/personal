@@ -8,6 +8,9 @@ import importPlugin from 'eslint-plugin-import';
 import vitestPlugin from '@vitest/eslint-plugin';
 
 export default tseslint.config(
+  {
+    ignores: ['.wrangler', 'build', 'node_modules'],
+  },
   eslint.configs.recommended,
   tseslint.configs.recommended,
   {
