@@ -3,7 +3,6 @@ import { createRequestHandler, type ServerBuild } from '@remix-run/cloudflare';
 import * as build from './build/server';
 import { getLoadContext } from 'load-context';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const handleRemixRequest = createRequestHandler(build as any as ServerBuild);
 
 export default {
