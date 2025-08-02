@@ -1,8 +1,5 @@
 name: Verify
-on:
-  push:
-    branches:
-      - '!main'
+on: [pull_request]
 jobs:
   verify:
     runs-on: ubuntu-latest
