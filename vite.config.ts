@@ -41,13 +41,6 @@ export default defineConfig({
       '@styles': path.resolve(__dirname, './styles'),
     },
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        api: 'modern',
-      },
-    },
-  },
   build: {
     minify: true,
   },
