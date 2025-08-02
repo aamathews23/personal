@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-noto-serif: 'Noto Serif', serif;
+  --font-roboto: 'Roboto', sans-serif;
+
+  --text-heading-xl: 5rem;
+  --text-heading-lg: 4rem;
+  --text-heading-base: 3rem;
+  --text-heading-sm: 2rem;
+}

@@ -1,5 +1,3 @@
-import classes from '@styles/components/hero.module.scss';
-
 export type HeroProps = {
   preheading?: string;
   heading: string;
@@ -8,25 +6,25 @@ export type HeroProps = {
 
 export const Hero = ({ preheading, heading, description }: HeroProps) => (
   <section
-    className={classes.hero}
+    className="flex w-full flex-col justify-center gap-8"
     data-testid="hero"
   >
     {preheading && (
       <span
-        className={classes['hero__preheading']}
+        className="font-roboto text-base text-slate-950"
         data-testid="hero-preheading"
       >
         {preheading}
       </span>
     )}
     <h1
-      className={classes['hero__heading']}
+      className="font-noto-serif text-heading-sm lg:text-heading-base font-bold text-slate-950"
       data-testid="hero-heading"
     >
       {heading}
     </h1>
     <p
-      className={classes['hero__description']}
+      className="font-roboto text-base text-slate-950"
       data-testid="hero-description"
     >
       {description}

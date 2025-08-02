@@ -3,6 +3,7 @@ import { vitePlugin as remix, cloudflareDevProxyVitePlugin } from '@remix-run/de
 import tsconfigPaths from 'vite-tsconfig-paths';
 import path from 'path';
 import { getLoadContext } from './load-context';
+import tailwindcss from '@tailwindcss/vite';
 
 declare module '@remix-run/cloudflare' {
   interface Future {
@@ -26,6 +27,7 @@ export default defineConfig({
         },
       }),
     tsconfigPaths(),
+    tailwindcss(),
   ],
   ssr: {
     resolve: {
@@ -37,13 +39,6 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './app'),
       '@styles': path.resolve(__dirname, './styles'),
-    },
-  },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        api: 'modern',
-      },
     },
   },
   build: {
