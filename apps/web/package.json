@@ -1,14 +1,15 @@
 {
-  "name": "@aamathews/personal",
+  "name": "@aamathews/web",
   "private": true,
   "sideEffects": false,
   "type": "module",
   "scripts": {
+    "clean:workspace": "git clean -xdf node_modules .wrangler build coverage",
     "build": "remix vite:build",
     "dev": "remix vite:dev",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
     "lint:fix": "eslint . --fix",
-    "test:unit": "vitest run",
+    "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "start": "wrangler dev",
     "typecheck": "tsc",

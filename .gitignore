@@ -11,3 +11,4 @@ coverage
 # cloudflare
 .wrangler
 .dev.vars
+worker-configuration.d.ts
