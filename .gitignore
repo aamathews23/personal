@@ -1,13 +1,14 @@
 # remix / node
 node_modules
 
-/.cache
-/build
+.cache
+build
 .env
 
 # testing
 coverage
 
 # cloudflare
-/.wrangler
+.wrangler
 .dev.vars
+worker-configuration.d.ts
