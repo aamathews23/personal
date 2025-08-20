@@ -114,6 +114,8 @@ importers:
         specifier: ^3.28.2
         version: 3.114.13(@cloudflare/workers-types@4.20250816.0)
 
+  packages/battleship: {}
+
 packages:
 
   '@adobe/css-tools@4.4.4':

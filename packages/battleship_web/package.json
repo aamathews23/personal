@@ -1,0 +1,13 @@
+{
+  "name": "@aamathews/battleship-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "clean:workspace": "git clean -xdf dist",
+    "build": "cargo build && wasm-pack build --out-dir=dist",
+    "lint": "cargo clippy",
+    "lint:fix": "cargo clippy --fix",
+    "typecheck": "echo 'No type checking in battleship-web package'",
+    "test": "cargo test"
+  }
+}

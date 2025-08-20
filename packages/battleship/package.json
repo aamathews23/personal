@@ -1,0 +1,12 @@
+{
+  "name": "@aamathews/battleship",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "cargo build",
+    "lint": "cargo clippy",
+    "lint:fix": "cargo clippy --fix",
+    "typecheck": "echo 'No type checking in battleship package'",
+    "test": "cargo test"
+  }
+}
