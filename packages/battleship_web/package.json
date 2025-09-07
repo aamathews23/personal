@@ -2,6 +2,14 @@
   "name": "@aamathews/battleship-web",
   "version": "0.1.0",
   "private": true,
+  "main": "dist/battleship_web.js",
+  "types": [
+    "dist/battleship_web.d.ts",
+    "dist/battleship_web_bg.wasm.d.ts"
+  ],
+  "files": [
+    "dist/**"
+  ],
   "scripts": {
     "clean:workspace": "git clean -xdf dist",
     "build": "cargo build && wasm-pack build --out-dir=dist",
