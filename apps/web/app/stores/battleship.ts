@@ -1,7 +1,19 @@
 import { create } from 'zustand';
 import { battleshipWeb, getGameBoard } from '@/utils/battleship';
+import { BoardCellVariant } from '@/types';
 
-export const useBattleshipStore = create((set) => ({
+type BattleshipStore = {
+  board: BoardCellVariant[];
+  isEnd: boolean;
+  amtOfTurns: number;
+  amtOfHits: number;
+  amtOfMisses: number;
+  shipsSunk: number;
+  shoot: (idx: number) => void;
+  reset: () => void;
+};
+
+export const useBattleshipStore = create<BattleshipStore>((set) => ({
   board: getGameBoard(64),
   isEnd: false,
   amtOfTurns: battleshipWeb.amt_of_turns(),

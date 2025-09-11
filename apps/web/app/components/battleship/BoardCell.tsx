@@ -1,11 +1,13 @@
 import { clsx } from 'clsx/lite';
-import { GameSquareVariant } from '@/types';
+import { BoardCellVariant } from '@/types';
 
-export type GameSquareProps = {
-  variant?: GameSquareVariant;
+export type BoardCellProps = {
+  idx: number;
+  variant?: BoardCellVariant;
+  onClick?: () => void;
 };
 
-export const GameSquare = ({ variant = 'unknown' }: GameSquareProps) => {
+export const BoardCell = ({ idx, variant = 'unknown', onClick }: BoardCellProps) => {
   const basic =
     'h-16 w-16 rounded-sm border-none transition-all duration-300 outline-none hover:cursor-pointer hover:border hover:border-solid hover:border-slate-600 focus:border focus:border-solid focus:border-slate-600';
   const unknown = 'bg-blue-300 hover:bg-blue-600 focus:bg-blue-600';
@@ -30,11 +32,18 @@ export const GameSquare = ({ variant = 'unknown' }: GameSquareProps) => {
       break;
   }
 
+  const handleOnClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
+
   return (
     <button
       className={classes}
       aria-label={ariaLabel}
-      data-testid="game-square"
+      data-testid={`board-cell-${idx}`}
+      onClick={handleOnClick}
     />
   );
 };

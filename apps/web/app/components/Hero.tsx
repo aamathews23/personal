@@ -18,7 +18,7 @@ export const Hero = ({ preheading, heading, description }: HeroProps) => (
       </span>
     )}
     <h1
-      className="font-noto-serif text-heading-sm lg:text-heading-base font-bold text-slate-950"
+      className="font-noto-serif text-heading-lg lg:text-heading-xl font-bold text-slate-950"
       data-testid="hero-heading"
     >
       {heading}
