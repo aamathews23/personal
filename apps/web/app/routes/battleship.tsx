@@ -1,4 +1,5 @@
 import type { MetaFunction } from '@remix-run/cloudflare';
+import { ClientOnly } from 'remix-utils/client-only';
 import { Hero } from '@/components/Hero';
 import { Board } from '@/components/battleship/Board';
 
@@ -15,7 +16,7 @@ const Battleship = () => (
       heading="Battleship"
       description="Sink all the ships to win!"
     />
-    <Board />
+    <ClientOnly fallback={null}>{() => <Board />}</ClientOnly>
   </main>
 );
 

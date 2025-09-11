@@ -42,6 +42,7 @@ export const BoardCell = ({ idx, variant = 'unknown', onClick }: BoardCellProps)
     <button
       className={classes}
       aria-label={ariaLabel}
+      data-board-cell-variant={variant}
       data-testid={`board-cell-${idx}`}
       onClick={handleOnClick}
     />

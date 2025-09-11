@@ -1,9 +1,9 @@
 import * as BattleshipWebWasm from '@aamathews/battleship-web';
-import type { GameSquareVariant, WasmMemory } from '@/types';
+import type { BoardCellVariant, WasmMemory } from '@/types';
 import { CELL_DEBUG } from '@/utils/env';
 
 export const createBoard = (board: Uint8Array<ArrayBuffer>) => {
-  const newBoard: GameSquareVariant[] = [];
+  const newBoard: BoardCellVariant[] = [];
 
   for (const cell of board) {
     if (cell === 1) {
@@ -23,7 +23,7 @@ export const createBoard = (board: Uint8Array<ArrayBuffer>) => {
 const memory: WasmMemory = BattleshipWebWasm.wasm_memory();
 export const battleshipWeb = BattleshipWebWasm.BattleshipWeb.new();
 
-export const getGameBoard = (size: number): GameSquareVariant[] => {
+export const getGameBoard = (size: number): BoardCellVariant[] => {
   const board = new Uint8Array(memory.buffer, battleshipWeb.board(), size);
   return createBoard(board);
 };

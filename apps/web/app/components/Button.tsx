@@ -34,6 +34,7 @@ export const Button = ({
     <button
       className={clsx(base, variant === 'secondary' ? secondary : primary, className)}
       type={type}
+      data-button-variant={variant}
       data-testid={dataTestId}
       onClick={handleOnClick}
     >
