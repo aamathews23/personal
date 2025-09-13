@@ -13,7 +13,7 @@ export const Board = () => {
   const reset = useBattleshipStore((state) => state.reset);
 
   return (
-    <section className="flex h-[600px] max-h-[600px] w-[600px] max-w-[600px] flex-col items-center justify-center gap-8 rounded-lg bg-blue-600 p-4">
+    <section className="flex h-[600px] max-h-[600px] w-[600px] max-w-[600px] flex-col items-center justify-center gap-8 rounded-lg bg-blue-800 p-4">
       {isEnd ? (
         <div className="flex h-full w-full flex-col items-center justify-center gap-8 rounded-lg bg-blue-300">
           <h2 className="font-noto-serif text-heading-base lg:text-heading-lg font-bold text-slate-950">

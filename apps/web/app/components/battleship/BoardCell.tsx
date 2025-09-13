@@ -9,8 +9,8 @@ export type BoardCellProps = {
 
 export const BoardCell = ({ idx, variant = 'unknown', onClick }: BoardCellProps) => {
   const basic =
-    'h-16 w-16 rounded-sm border-none transition-all duration-300 outline-none hover:cursor-pointer hover:border hover:border-solid hover:border-slate-600 focus:border focus:border-solid focus:border-slate-600';
-  const unknown = 'bg-blue-300 hover:bg-blue-600 focus:bg-blue-600';
+    'h-16 w-16 rounded-sm border-none transition-all duration-300 outline-none hover:cursor-pointer';
+  const unknown = 'bg-blue-300 hover:bg-blue-500 focus:bg-blue-500';
   const ship = 'bg-orange-300 hover:bg-orange-600 focus:bg-orange-600';
   const hit = 'bg-green-300';
   const miss = 'bg-red-300';
