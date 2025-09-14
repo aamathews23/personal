@@ -15,9 +15,15 @@ jobs:
         uses: actions-rust-lang/setup-rust-toolchain@v1
         with:
           toolchain: stable
+          target: wasm32-unknown-unknown
+          components: clippy
+      - name: Install wasm-pack
+        run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh -s -- -f
       - name: Build
         run: cargo build -p battleship_web
       - name: Test
         run: cargo test -p battleship_web
       - name: Lint
         run: cargo clippy -p battleship_web
+      - name: Build WASM
+        run: wasm-pack build packages/battleship_web --target web --out-dir ../packages/battleship_web/dist
