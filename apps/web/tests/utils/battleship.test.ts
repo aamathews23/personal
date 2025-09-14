@@ -1,7 +1,7 @@
 import { describe, test, expect, vi } from 'vitest';
 import { createBoard } from '@/utils/battleship';
 
-vi.mock('@aamathews/battleship-web', () => ({
+vi.mock('@aamathews23/battleship-web', () => ({
   wasm_memory: () => ({ buffer: new ArrayBuffer(4) }),
   BattleshipWeb: {
     new: () => ({

@@ -30,6 +30,3 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           workingDirectory: apps/web
-          preCommands: |
-            pnpm --filter web lint
-            pnpm --filter web test:coverage

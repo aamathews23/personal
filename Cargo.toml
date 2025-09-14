@@ -11,3 +11,7 @@ homepage = "https://github.com/aamathews23/personal"
 readme = "README.md"
 repository = "https://github.com/aamathews23/personal"
 edition = "2024"
+
+[profile.release]
+# Tell `rustc` to optimize for small code size.
+opt-level = "s"

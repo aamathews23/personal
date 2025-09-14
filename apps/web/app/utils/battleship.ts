@@ -1,4 +1,4 @@
-import * as BattleshipWebWasm from '@aamathews/battleship-web';
+import * as BattleshipWebWasm from '@aamathews23/battleship-web';
 import type { BoardCellVariant, WasmMemory } from '@/types';
 import { CELL_DEBUG } from '@/utils/env';
 
