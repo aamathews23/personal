@@ -1,14 +1,18 @@
 {
-  "name": "@aamathews/personal",
+  "name": "@aamathews23/personal",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "clean": "git clean -xdf node_modules",
+    "clean": "git clean -xdf node_modules target",
     "clean:workspace": "pnpm -r --if-present clean && pnpm clean",
     "build": "pnpm -r --if-present build",
     "lint": "pnpm -r --if-present lint",
     "lint:fix": "pnpm -r --if-present lint:fix",
     "typecheck": "pnpm -r --if-present typecheck",
-    "test": "pnpm -r --if-present test"
+    "test": "pnpm -r --if-present test",
+    "ci:publish": "pnpm publish -r"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.29.7"
   }
 }

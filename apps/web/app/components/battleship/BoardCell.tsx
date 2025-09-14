@@ -1,0 +1,50 @@
+import { clsx } from 'clsx/lite';
+import { BoardCellVariant } from '@/types';
+
+export type BoardCellProps = {
+  idx: number;
+  variant?: BoardCellVariant;
+  onClick?: () => void;
+};
+
+export const BoardCell = ({ idx, variant = 'unknown', onClick }: BoardCellProps) => {
+  const basic =
+    'h-16 w-16 rounded-sm border-none transition-all duration-300 outline-none hover:cursor-pointer';
+  const unknown = 'bg-blue-300 hover:bg-blue-500 focus:bg-blue-500';
+  const ship = 'bg-orange-300 hover:bg-orange-600 focus:bg-orange-600';
+  const hit = 'bg-green-300';
+  const miss = 'bg-red-300';
+
+  let ariaLabel = 'Unknown.';
+  let classes = clsx(basic, unknown);
+  switch (variant) {
+    case 'miss':
+      ariaLabel = 'Miss...';
+      classes = clsx(basic, miss);
+      break;
+    case 'hit':
+      ariaLabel = 'Hit!';
+      classes = clsx(basic, hit);
+      break;
+    case 'ship':
+      ariaLabel = 'Ship.';
+      classes = clsx(basic, ship);
+      break;
+  }
+
+  const handleOnClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
+
+  return (
+    <button
+      className={classes}
+      aria-label={ariaLabel}
+      data-board-cell-variant={variant}
+      data-testid={`board-cell-${idx}`}
+      onClick={handleOnClick}
+    />
+  );
+};

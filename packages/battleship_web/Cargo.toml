@@ -1,0 +1,29 @@
+[package]
+name = "battleship_web"
+version = "0.1.0"
+description = "simple wasm package using the `battleship-rs` library package."
+authors.workspace = true
+edition.workspace = true
+homepage.workspace = true
+repository.workspace = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = ["console_error_panic_hook"]
+
+[dependencies]
+wasm-bindgen = "0.2.84"
+battleship = { version = "0.1.0", path = "../battleship" }
+getrandom = { version = "0.2", features = ["js"] }
+console_error_panic_hook = { version = "0.1.7", optional = true }
+
+[dependencies.web-sys]
+version = "0.3"
+features = [
+    "console",
+]
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3.34"
