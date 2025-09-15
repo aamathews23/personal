@@ -1,16 +1,33 @@
+import { useEffect, useState } from 'react';
 import { useBattleshipStore } from '@/stores/battleship';
 import { BoardCell } from '@/components/battleship/BoardCell';
 import { Button } from '@/components/Button';
+import { Battleship } from '@/utils/battleship';
 
+// TODO: add loading state while WASM is loading
 export const Board = () => {
-  const board = useBattleshipStore((state) => state.board);
-  const isEnd = useBattleshipStore((state) => state.isEnd);
-  const amtOfTurns = useBattleshipStore((state) => state.amtOfTurns);
-  const amtOfHits = useBattleshipStore((state) => state.amtOfHits);
-  const amtOfMisses = useBattleshipStore((state) => state.amtOfMisses);
-  const shipsSunk = useBattleshipStore((state) => state.shipsSunk);
-  const shoot = useBattleshipStore((state) => state.shoot);
-  const reset = useBattleshipStore((state) => state.reset);
+  const [battleship, setBattleship] = useState<Battleship | null>(null);
+
+  useEffect(() => {
+    const initBattleship = async () => {
+      const battleship = new Battleship();
+      await battleship.init();
+      setBattleship(battleship);
+    };
+
+    initBattleship();
+  }, []);
+
+  const battleshipStore = useBattleshipStore(battleship);
+
+  const board = battleshipStore((state) => state.board);
+  const isEnd = battleshipStore((state) => state.isEnd);
+  const amtOfTurns = battleshipStore((state) => state.amtOfTurns);
+  const amtOfHits = battleshipStore((state) => state.amtOfHits);
+  const amtOfMisses = battleshipStore((state) => state.amtOfMisses);
+  const shipsSunk = battleshipStore((state) => state.shipsSunk);
+  const shoot = battleshipStore((state) => state.shoot);
+  const reset = battleshipStore((state) => state.reset);
 
   return (
     <section className="flex h-[600px] max-h-[600px] w-[600px] max-w-[600px] flex-col items-center justify-center gap-8 rounded-lg bg-blue-800 p-4">
