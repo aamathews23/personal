@@ -5,6 +5,7 @@ import path from 'path';
 import { getLoadContext } from './load-context';
 import tailwindcss from '@tailwindcss/vite';
 import wasm from 'vite-plugin-wasm';
+import topLevelAwait from 'vite-plugin-top-level-await';
 
 declare module '@remix-run/cloudflare' {
   interface Future {
@@ -30,6 +31,7 @@ export default defineConfig({
     tsconfigPaths(),
     tailwindcss(),
     wasm(),
+    topLevelAwait(),
   ],
   ssr: {
     resolve: {

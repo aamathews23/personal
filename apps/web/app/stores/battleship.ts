@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { battleshipWeb, getGameBoard } from '@/utils/battleship';
+import { Battleship } from '@/utils/battleship';
 import { BoardCellVariant } from '@/types';
 
 export type BattleshipStore = {
@@ -13,33 +13,39 @@ export type BattleshipStore = {
   reset: () => void;
 };
 
-export const useBattleshipStore = create<BattleshipStore>((set) => ({
-  board: getGameBoard(64),
-  amtOfTurns: battleshipWeb.amt_of_turns(),
-  amtOfHits: battleshipWeb.amt_of_hits(),
-  amtOfMisses: battleshipWeb.amt_of_misses(),
-  shipsSunk: battleshipWeb.ships_sunk(),
-  isEnd: battleshipWeb.is_end(),
-  shoot: (idx: number) => {
-    battleshipWeb.shoot(idx);
-    set({
-      board: getGameBoard(64),
-      amtOfTurns: battleshipWeb.amt_of_turns(),
-      amtOfHits: battleshipWeb.amt_of_hits(),
-      amtOfMisses: battleshipWeb.amt_of_misses(),
-      shipsSunk: battleshipWeb.ships_sunk(),
-      isEnd: battleshipWeb.is_end(),
-    });
-  },
-  reset: () => {
-    battleshipWeb.play_again();
-    set({
-      board: getGameBoard(64),
-      amtOfTurns: battleshipWeb.amt_of_turns(),
-      amtOfHits: battleshipWeb.amt_of_hits(),
-      amtOfMisses: battleshipWeb.amt_of_misses(),
-      shipsSunk: battleshipWeb.ships_sunk(),
-      isEnd: battleshipWeb.is_end(),
-    });
-  },
-}));
+export const useBattleshipStore = (battleship: Battleship | null) => {
+  return create<BattleshipStore>((set) => ({
+    board: battleship ? battleship.getGameBoard(64) : [],
+    amtOfTurns: battleship?.amtOfTurns || 0,
+    amtOfHits: battleship?.amtOfHits || 0,
+    amtOfMisses: battleship?.amtOfMisses || 0,
+    shipsSunk: battleship?.shipsSunk || 0,
+    isEnd: battleship?.isEnd || false,
+    shoot: (idx: number) => {
+      if (!battleship) return;
+
+      battleship.shoot(idx);
+      set({
+        board: battleship.getGameBoard(64),
+        amtOfTurns: battleship.amtOfTurns,
+        amtOfHits: battleship.amtOfHits,
+        amtOfMisses: battleship.amtOfMisses,
+        shipsSunk: battleship.shipsSunk,
+        isEnd: battleship.isEnd,
+      });
+    },
+    reset: () => {
+      if (!battleship) return;
+
+      battleship.playAgain();
+      set({
+        board: battleship.getGameBoard(64),
+        amtOfTurns: battleship.amtOfTurns,
+        amtOfHits: battleship.amtOfHits,
+        amtOfMisses: battleship.amtOfMisses,
+        shipsSunk: battleship.shipsSunk,
+        isEnd: battleship.isEnd,
+      });
+    },
+  }));
+};

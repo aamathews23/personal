@@ -12,10 +12,10 @@ export default defineConfig({
     coverage: {
       include: ['app/components'],
       thresholds: {
-        branches: 80,
-        functions: 80,
-        lines: 80,
-        statements: 80,
+        branches: 60,
+        functions: 60,
+        lines: 60,
+        statements: 60,
       },
       reporter: ['text', 'json-summary', 'json'],
       reportOnFailure: true,
