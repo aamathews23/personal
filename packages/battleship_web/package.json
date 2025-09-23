@@ -3,8 +3,10 @@
   "version": "1.0.1",
   "type": "module",
   "sideEffects": false,
+  "main": "./dist/battleship_web.js",
   "files": [
-    "dist"
+    "README",
+    "dist/"
   ],
   "types": "./dist/battleship_web.d.ts",
   "exports": {
@@ -13,10 +15,9 @@
   },
   "scripts": {
     "clean:workspace": "git clean -xdf dist node_modules",
-    "build": "cargo build && wasm-pack build --out-dir=dist --target=web --release && rimraf dist/package.json",
+    "build": "cargo build && wasm-pack build --out-dir=dist --target=web --release && rimraf dist/package.json dist/.gitignore",
     "lint": "cargo clippy",
     "lint:fix": "cargo clippy --fix",
-    "typecheck": "echo 'No type checking in battleship-web package'",
     "test": "cargo test",
     "prepare": "pnpm build"
   },
