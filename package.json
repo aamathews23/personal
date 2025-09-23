@@ -10,7 +10,7 @@
     "lint:fix": "pnpm -r --if-present lint:fix",
     "typecheck": "pnpm -r --if-present typecheck",
     "test": "pnpm -r --if-present test",
-    "ci:publish": "pnpm publish -r"
+    "ci:publish": "pnpm publish --recursive --access public"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.7"
