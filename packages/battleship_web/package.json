@@ -1,6 +1,6 @@
 {
   "name": "@aamathews23/battleship-web",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "sideEffects": false,
   "main": "./dist/battleship_web.js",
