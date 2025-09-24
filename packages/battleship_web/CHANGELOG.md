@@ -1,5 +1,12 @@
 # @aamathews23/battleship-web
 
+## 1.0.3
+
+### Patch Changes
+
+- 92c0b7f: - Add LICENSE file.
+  - Add better package metadata.
+
 ## 1.0.2
 
 ### Patch Changes
