@@ -1,25 +1,47 @@
 {
   "name": "@aamathews23/battleship-web",
   "version": "1.0.2",
-  "type": "module",
-  "sideEffects": false,
-  "main": "./dist/battleship_web.js",
-  "files": [
-    "README",
-    "dist/"
+  "description": "The game of battleship, implemented in Rust, compiled to WASM, and distributed in JS / TS.",
+  "keywords": [
+    "battleship",
+    "rust",
+    "wasm",
+    "webassembly",
+    "game",
+    "browser"
   ],
-  "types": "./dist/battleship_web.d.ts",
+  "homepage": "https://github.com/aamathews23/personal/tree/main/packages/battleship_web",
+  "bugs": {
+    "url": "https://github.com/aamathews23/personal/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aamathews23/personal.git"
+  },
+  "license": "MIT",
+  "author": "Aaron Mathews <aamathews23@gmail.com>",
+  "type": "module",
   "exports": {
     ".": "./dist/battleship_web.js",
     "./battleship_web_bg.wasm": "./dist/battleship_web_bg.wasm"
   },
+  "module": "./dist/battleship_web.js",
+  "main": "./dist/battleship_web.js",
+  "types": "./dist/battleship_web.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist/battleship_web.js",
+    "dist/battleship_web.d.ts",
+    "dist/battleship_web_bg.wasm",
+    "dist/battleship_web_bg.wasm.d.ts"
+  ],
   "scripts": {
     "clean:workspace": "git clean -xdf dist node_modules",
-    "build": "cargo build && wasm-pack build --out-dir=dist --target=web --release && rimraf dist/package.json dist/.gitignore",
+    "build": "cargo build && wasm-pack build --out-dir=dist --target=web --release && rimraf dist/package.json dist/.gitignore dist/README.md",
     "lint": "cargo clippy",
     "lint:fix": "cargo clippy --fix",
     "test": "cargo test",
-    "prepare": "pnpm build"
+    "prepublishOnly": "pnpm build"
   },
   "devDependencies": {
     "rimraf": "^6.0.1"
