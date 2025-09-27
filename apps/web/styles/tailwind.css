@@ -8,4 +8,40 @@
   --text-heading-lg: 4rem;
   --text-heading-base: 3rem;
   --text-heading-sm: 2rem;
+  --animate-character-fade: character-fade 1s ease 500ms forwards;
+  --animate-arm-left-slide: arm-left-slide 500ms ease forwards;
+  --animate-arm-right-slide: arm-right-slide 700ms ease forwards;
+
+  @keyframes character-fade {
+    from {
+      opacity: 0;
+      transform: translate(0px, 64px);
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes arm-left-slide {
+    0% {
+      opacity: 0;
+    }
+
+    75% {
+      opacity: 1;
+      transform: translate(0px, -5px);
+    }
+  }
+
+  @keyframes arm-right-slide {
+    0% {
+      opacity: 0;
+    }
+
+    75% {
+      opacity: 1;
+      transform: translate(0px, -10px);
+    }
+  }
 }
