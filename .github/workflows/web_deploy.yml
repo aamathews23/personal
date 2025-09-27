@@ -22,13 +22,6 @@ jobs:
         with:
           node-version: 22.14.0
           cache: 'pnpm'
-      - name: Install Rust
-        uses: actions-rust-lang/setup-rust-toolchain@v1
-        with:
-          toolchain: stable
-          target: wasm32-unknown-unknown
-      - name: Install wasm-pack
-        run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh -s -- -f
       - name: Install dependencies
         run: pnpm install
       - name: Deploy
