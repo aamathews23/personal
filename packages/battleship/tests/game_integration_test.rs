@@ -1,7 +1,6 @@
 use battleship::{
     board_cell::BoardCell,
     game::Game,
-    game_trait::GameTrait,
     shoot_trait::ShootTrait
 };
 
@@ -15,8 +14,7 @@ fn test_new() {
 
 #[test]
 fn test_start_game() {
-    let mut game = Game::new(8);
-    game.start_game();
+    let game = Game::new(8);
 
     let mut count = 0;
     for y in 0..8 {
@@ -36,7 +34,6 @@ fn test_start_game() {
 #[test]
 fn test_shoot_hit() {
     let mut game = Game::new(8);
-    game.start_game();
 
     let mut x_coord = 0;
     let mut y_coord = 0;
@@ -61,7 +58,6 @@ fn test_shoot_hit() {
 #[test]
 fn test_shoot_miss() {
     let mut game = Game::new(8);
-    game.start_game();
 
     let mut x_coord = 0;
     let mut y_coord = 0;
@@ -86,7 +82,6 @@ fn test_shoot_miss() {
 #[test]
 fn test_shoot_repeat() {
     let mut game = Game::new(8);
-    game.start_game();
 
     let mut x_coord = 0;
     let mut y_coord = 0;
@@ -117,7 +112,6 @@ fn test_shoot_repeat() {
 #[test]
 fn test_shoot_sunk() {
     let mut game = Game::new(8);
-    game.start_game();
 
     let mut ship_coords = Vec::new();
     for y in 0..8 {
@@ -156,7 +150,6 @@ fn test_shoot_sunk() {
 #[test]
 fn test_is_end() {
     let mut game = Game::new(8);
-    game.start_game();
 
     let mut ship_coords = Vec::new();
     for y in 0..8 {

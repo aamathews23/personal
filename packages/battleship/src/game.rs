@@ -1,7 +1,6 @@
 use crate::{
     board::Board,
     board_cell::BoardCell,
-    game_trait::GameTrait,
     random_generator::RandomGeneratorImpl,
     ship_yard::ShipYard,
     shoot_trait::{
@@ -21,14 +20,28 @@ pub struct Game {
 
 impl Game {
     pub fn new(board_size: u32) -> Self {
-        Self {
+        let mut game = Self {
             amt_of_turns: 0,
             amt_of_hits: 0,
             amt_of_misses: 0,
             ships_sunk: 0,
             board: Board::new(board_size as usize),
             ship_yard: ShipYard::new(board_size,3)
+        };
+
+        let mut generator = RandomGeneratorImpl::new();
+
+        game.ship_yard.build_destroyer(&mut generator);
+        game.ship_yard.build_cruiser(&mut generator);
+        game.ship_yard.build_battleship(&mut generator);
+
+        for ship_coord in game.ship_yard.get_ship_coords().keys() {
+            let x = ship_coord.0;
+            let y = ship_coord.1;
+            game.board.set_cell(x as usize, y as usize, BoardCell::Ship);
         }
+
+        game
     }
 
     pub fn is_end(&self) -> bool {
@@ -63,30 +76,14 @@ impl ShootTrait for Game {
     }
 }
 
-impl GameTrait for Game {
-    fn start_game(&mut self) {
-        let mut generator = RandomGeneratorImpl::new();
-
-        self.ship_yard.build_destroyer(&mut generator);
-        self.ship_yard.build_cruiser(&mut generator);
-        self.ship_yard.build_battleship(&mut generator);
-
-        for ship_coord in self.ship_yard.get_ship_coords().keys() {
-            let x = ship_coord.0;
-            let y = ship_coord.1;
-            self.board.set_cell(x as usize, y as usize, BoardCell::Ship);
-        }
-    }
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
     fn test_new() {
-        let mut game = Game::new(8);
-        game.start_game();
+        let game = Game::new(8);
+
         assert_eq!(game.amt_of_hits, 0);
         assert_eq!(game.amt_of_misses, 0);
         assert_eq!(game.amt_of_turns, 0);
