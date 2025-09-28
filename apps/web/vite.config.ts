@@ -48,4 +48,7 @@ export default defineConfig({
   build: {
     minify: true,
   },
+  optimizeDeps: {
+    exclude: ['@aamathews23/battleship-web'],
+  },
 });
