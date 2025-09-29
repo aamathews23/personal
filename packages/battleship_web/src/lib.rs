@@ -5,7 +5,6 @@ use wasm_bindgen::prelude::*;
 use battleship::{
     board_cell::BoardCell,
     game::Game,
-    game_trait::GameTrait,
     shoot_trait::ShootTrait
 };
 
@@ -29,8 +28,7 @@ pub struct BattleshipWeb {
 impl BattleshipWeb {
     pub fn new() -> Self {
         utils::set_panic_hook();
-        let mut game: Game = Game::new(8);
-        game.start_game();
+        let game: Game = Game::new(8);
 
         Self {
             game
@@ -65,11 +63,6 @@ impl BattleshipWeb {
         let x = idx / 8;
         let y = idx % 8;
         self.game.shoot(x, y);
-    }
-
-    pub fn play_again(&mut self) {
-        self.game = Game::new(8);
-        self.game.start_game();
     }
 }
 

@@ -4,7 +4,8 @@
 
 ### Patch Changes
 
-- 92c0b7f: - Add LICENSE file.
+- 92c0b7f:
+  - Add LICENSE file.
   - Add better package metadata.
 
 ## 1.0.2
@@ -17,7 +18,8 @@
 
 ### Patch Changes
 
-- 3e9bb56: - Adds a README.md file for the package.
+- 3e9bb56:
+  - Adds a README.md file for the package.
   - Updates the package to be publicly scoped.
 
 ## 1.0.0

@@ -37,7 +37,7 @@
   ],
   "scripts": {
     "clean:workspace": "git clean -xdf dist node_modules",
-    "build": "cargo build && wasm-pack build --out-dir=dist --target=web --release && rimraf dist/package.json dist/.gitignore dist/README.md",
+    "build": "wasm-pack build --out-dir=dist --target=web --release && rimraf dist/package.json dist/.gitignore dist/README.md",
     "lint": "cargo clippy",
     "lint:fix": "cargo clippy --fix",
     "test": "cargo test",
