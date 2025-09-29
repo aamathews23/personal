@@ -1,5 +1,11 @@
 # @aamathews23/battleship-web
 
+## 2.0.0
+
+### Major Changes
+
+- 6eae17c: Remove the wasm_memory method as it is unused.
+
 ## 1.1.0
 
 ### Minor Changes
