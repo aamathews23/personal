@@ -15,11 +15,6 @@ use battleship::{
  */
 
 #[wasm_bindgen]
-pub fn wasm_memory() -> JsValue {
-    wasm_bindgen::memory()
-}
-
-#[wasm_bindgen]
 pub struct BattleshipWeb {
     game: Game
 }
