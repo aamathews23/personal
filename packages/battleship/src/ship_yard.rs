@@ -38,24 +38,22 @@ impl Display for ShipYardError {
 }
 
 pub struct ShipYard {
-    board_size: u32,
     capacity: usize,
     ships: Vec<Ship>,
-    ship_coords: HashMap<(u32, u32), ShipCoords>
+    ship_coords: HashMap<(u8, u8), ShipCoords>
 }
 
 /// A class for ship management in the battleship game.
 impl ShipYard {
-    pub fn new(board_size: u32, capacity: usize) -> Self {
+    pub fn new(capacity: usize) -> Self {
         Self {
-            board_size,
             capacity,
             ships: Vec::new(),
             ship_coords: HashMap::new()
         }
     }
 
-    fn build_ship(&mut self, size: u32, generator: &mut dyn RandomGeneratorTrait) {
+    fn build_ship(&mut self, size: u8, generator: &mut dyn RandomGeneratorTrait) {
         if !self.has_capacity() {
             panic!("{}", ShipYardError::Full)
         }
@@ -67,9 +65,9 @@ impl ShipYard {
         while !is_valid {
             let ship_direction = &ship.direction;
             let ship_size = &ship.size;
-            let s = generator.generate(0, self.board_size - ship_size);
+            let s = generator.generate(0, 10 - ship_size);
             let e = s + ship_size;
-            let static_idx = generator.generate(0, self.board_size - ship_size);
+            let static_idx = generator.generate(0, 10 - ship_size);
 
             match ship_direction {
                 Direction::Horizontal => {
@@ -152,13 +150,20 @@ impl ShipYard {
         true
     }
 
-    pub fn get_ship_coords(&self) -> &HashMap<(u32, u32), ShipCoords> {
+    pub fn get_ship_coords(&self) -> &HashMap<(u8, u8), ShipCoords> {
         &self.ship_coords
+    }
+
+    pub fn clear_ships(&mut self) {
+        self.ships.clear();
+        self.ships.shrink_to_fit();
+        self.ship_coords.clear();
+        self.ship_coords.shrink_to_fit();
     }
 }
 
 impl ShootTrait for ShipYard {
-    fn shoot(&mut self, x: u32, y: u32) -> ShootTraitResult {
+    fn shoot(&mut self, x: u8, y: u8) -> ShootTraitResult {
         let key = (x, y);
 
         match self.ship_coords.get(&key) {
@@ -190,7 +195,7 @@ mod tests {
     use super::*;
 
     fn build_ship_yard() -> ShipYard {
-        ShipYard::new(8, 3)
+        ShipYard::new(3)
     }
 
     #[test]
@@ -229,7 +234,7 @@ mod tests {
         let mut mock = MockRandomGeneratorTrait::new();
         mock.expect_generate()
             .returning(|_s, _e| 0);
-        let mut ship_yard = ShipYard::new(8, 0);
+        let mut ship_yard = ShipYard::new(0);
         ship_yard.build_ship(1, &mut mock);
     }
 
@@ -341,7 +346,7 @@ mod tests {
         mock.expect_generate()
             .returning(|_s, _e| 0);
 
-        let mut ship_yard = ShipYard::new(8, 1);
+        let mut ship_yard = ShipYard::new(1);
         assert!(ship_yard.has_capacity());
         ship_yard.build_destroyer(&mut mock);
         assert!(!ship_yard.has_capacity());
@@ -366,5 +371,18 @@ mod tests {
     fn test_are_all_ships_sunk_empty_yard() {
         let ship_yard = build_ship_yard();
         ship_yard.are_all_ships_sunk();
+    }
+
+    #[test]
+    fn test_clear_ships() {
+        let mut mock = MockRandomGeneratorTrait::new();
+        mock.expect_generate()
+            .returning(|_s, _e| 0);
+
+        let mut ship_yard = build_ship_yard();
+        ship_yard.build_destroyer(&mut mock);
+        assert_eq!(ship_yard.get_yard_size(), 1);
+        ship_yard.clear_ships();
+        assert_eq!(ship_yard.get_yard_size(), 0);
     }
 }

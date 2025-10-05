@@ -19,8 +19,8 @@ impl RandomGeneratorImpl {
 }
 
 impl RandomGeneratorTrait for RandomGeneratorImpl {
-    fn generate(&mut self, start: u32, end: u32) -> u32 {
-        let choices: Vec<u32> = (start..end).collect();
+    fn generate(&mut self, start: u8, end: u8) -> u8 {
+        let choices: Vec<u8> = (start..end).collect();
 
 
         match choices.choose(&mut self.rng) {

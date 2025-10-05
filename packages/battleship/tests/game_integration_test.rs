@@ -6,7 +6,7 @@ use battleship::{
 
 #[test]
 fn test_new() {
-    let game = Game::new(8);
+    let game = Game::new();
     assert_eq!(game.amt_of_turns, 0);
     assert_eq!(game.amt_of_hits, 0);
     assert_eq!(game.amt_of_misses, 0);
@@ -14,11 +14,12 @@ fn test_new() {
 
 #[test]
 fn test_start_game() {
-    let game = Game::new(8);
+    let mut game = Game::new();
+    game.play();
 
     let mut count = 0;
-    for y in 0..8 {
-        for x in 0..8 {
+    for y in 0..10 {
+        for x in 0..10 {
             if game.board.get_cell(x, y) == BoardCell::Ship {
                 count += 1;
             }
@@ -33,13 +34,14 @@ fn test_start_game() {
 
 #[test]
 fn test_shoot_hit() {
-    let mut game = Game::new(8);
+    let mut game = Game::new();
+    game.play();
 
     let mut x_coord = 0;
     let mut y_coord = 0;
 
-    for y in 0..8 {
-        for x in 0..8 {
+    for y in 0..10 {
+        for x in 0..10 {
             if game.board.get_cell(x, y) == BoardCell::Ship {
                 x_coord = x;
                 y_coord = y;
@@ -48,7 +50,7 @@ fn test_shoot_hit() {
         }
     }
 
-    game.shoot(x_coord as u32, y_coord as u32);
+    game.shoot(x_coord as u8, y_coord as u8);
 
     assert!(game.amt_of_hits > 0);
     assert_eq!(game.amt_of_misses, 0);
@@ -57,13 +59,14 @@ fn test_shoot_hit() {
 
 #[test]
 fn test_shoot_miss() {
-    let mut game = Game::new(8);
+    let mut game = Game::new();
+    game.play();
 
     let mut x_coord = 0;
     let mut y_coord = 0;
 
-    for y in 0..8 {
-        for x in 0..8 {
+    for y in 0..10 {
+        for x in 0..10 {
             if game.board.get_cell(x, y) == BoardCell::Unknown {
                 x_coord = x;
                 y_coord = y;
@@ -72,7 +75,7 @@ fn test_shoot_miss() {
         }
     }
 
-    game.shoot(x_coord as u32, y_coord as u32);
+    game.shoot(x_coord as u8, y_coord as u8);
 
     assert_eq!(game.amt_of_hits, 0);
     assert!(game.amt_of_misses > 0);
@@ -81,16 +84,17 @@ fn test_shoot_miss() {
 
 #[test]
 fn test_shoot_repeat() {
-    let mut game = Game::new(8);
+    let mut game = Game::new();
+    game.play();
 
     let mut x_coord = 0;
     let mut y_coord = 0;
 
-    for y in 0..8 {
-        for x in 0..8 {
+    for y in 0..10 {
+        for x in 0..10 {
             if game.board.get_cell(x, y) == BoardCell::Ship {
-                x_coord = x as u32;
-                y_coord = y as u32;
+                x_coord = x as u8;
+                y_coord = y as u8;
                 break;
             }
         }
@@ -111,11 +115,12 @@ fn test_shoot_repeat() {
 
 #[test]
 fn test_shoot_sunk() {
-    let mut game = Game::new(8);
+    let mut game = Game::new();
+    game.play();
 
     let mut ship_coords = Vec::new();
-    for y in 0..8 {
-        for x in 0..8 {
+    for y in 0..10 {
+        for x in 0..10 {
             if game.board.get_cell(x, y) == BoardCell::Ship {
                 if game.board.get_cell(x + 1, y) == BoardCell::Ship {
                     let mut x_coord = x;
@@ -141,7 +146,7 @@ fn test_shoot_sunk() {
     }
 
     for ship_coord in ship_coords {
-        game.shoot(ship_coord.0 as u32, ship_coord.1 as u32);
+        game.shoot(ship_coord.0 as u8, ship_coord.1 as u8);
     }
 
     assert!(game.ships_sunk > 0);
@@ -149,13 +154,14 @@ fn test_shoot_sunk() {
 
 #[test]
 fn test_is_end() {
-    let mut game = Game::new(8);
+    let mut game = Game::new();
+    game.play();
 
     let mut ship_coords = Vec::new();
-    for y in 0..8 {
-        for x in 0..8 {
+    for y in 0..10 {
+        for x in 0..10 {
             if game.board.get_cell(x, y) == BoardCell::Ship {
-                ship_coords.push((x as u32, y as u32));
+                ship_coords.push((x as u8, y as u8));
             }
         }
     }
@@ -167,4 +173,47 @@ fn test_is_end() {
     }
 
     assert!(game.is_end());
+}
+
+#[test]
+fn test_reset() {
+    let mut game = Game::new();
+    game.play();
+
+    let mut ship_coords = Vec::new();
+    for y in 0..10 {
+        for x in 0..10 {
+            if game.board.get_cell(x, y) == BoardCell::Ship {
+                ship_coords.push((x as u8, y as u8));
+            }
+        }
+    }
+
+    for ship_coord in ship_coords {
+        game.shoot(ship_coord.0, ship_coord.1);
+        assert!(game.amt_of_hits > 0);
+        assert!(game.amt_of_turns > 0);
+    }
+
+    assert!(game.is_end());
+
+    game.reset();
+
+    assert_eq!(game.amt_of_hits, 0);
+    assert_eq!(game.amt_of_misses, 0);
+    assert_eq!(game.amt_of_turns, 0);
+    assert_eq!(game.ships_sunk, 0);
+    assert_eq!(game.is_end(), false);
+
+    let mut played_cell_count = 0;
+    for y in 0..10 {
+        for x in 0..10 {
+            let cell = game.board.get_cell(x, y);
+            if cell == BoardCell::Hit || cell == BoardCell::Miss {
+                played_cell_count += 1;
+            }
+        }
+    }
+
+    assert_eq!(played_cell_count, 0);
 }

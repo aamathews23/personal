@@ -4,12 +4,12 @@ use crate::random_generator::RandomGeneratorImpl;
 #[derive(Debug, PartialEq)]
 pub struct Ship {
     pub direction: Direction,
-    pub size: u32,
-    pub health: u32
+    pub size: u8,
+    pub health: u8
 }
 
 impl Ship {
-    pub fn new(size: u32) -> Ship {
+    pub fn new(size: u8) -> Ship {
         let mut generator = RandomGeneratorImpl::new();
         let direction = Direction::random(&mut generator);
         Ship {

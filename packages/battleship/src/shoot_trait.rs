@@ -7,5 +7,5 @@ pub enum ShootTraitResult {
 }
 
 pub trait ShootTrait {
-    fn shoot(&mut self, x: u32, y: u32) -> ShootTraitResult;
+    fn shoot(&mut self, x: u8, y: u8) -> ShootTraitResult;
 }

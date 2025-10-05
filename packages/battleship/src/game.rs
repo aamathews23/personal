@@ -10,38 +10,48 @@ use crate::{
 };
 
 pub struct Game {
-    pub amt_of_turns: u32,
-    pub amt_of_hits: u32,
-    pub amt_of_misses: u32,
-    pub ships_sunk: u32,
+    pub amt_of_turns: u8,
+    pub amt_of_hits: u8,
+    pub amt_of_misses: u8,
+    pub ships_sunk: u8,
     pub board: Board,
     ship_yard: ShipYard
 }
 
 impl Game {
-    pub fn new(board_size: u32) -> Self {
-        let mut game = Self {
+    pub fn new() -> Self {
+        Self {
             amt_of_turns: 0,
             amt_of_hits: 0,
             amt_of_misses: 0,
             ships_sunk: 0,
-            board: Board::new(board_size as usize),
-            ship_yard: ShipYard::new(board_size,3)
-        };
+            board: Board::new(),
+            ship_yard: ShipYard::new(3)
+        }
+    }
 
+    pub fn play(&mut self) {
         let mut generator = RandomGeneratorImpl::new();
 
-        game.ship_yard.build_destroyer(&mut generator);
-        game.ship_yard.build_cruiser(&mut generator);
-        game.ship_yard.build_battleship(&mut generator);
+        self.ship_yard.build_destroyer(&mut generator);
+        self.ship_yard.build_cruiser(&mut generator);
+        self.ship_yard.build_battleship(&mut generator);
 
-        for ship_coord in game.ship_yard.get_ship_coords().keys() {
+        for ship_coord in self.ship_yard.get_ship_coords().keys() {
             let x = ship_coord.0;
             let y = ship_coord.1;
-            game.board.set_cell(x as usize, y as usize, BoardCell::Ship);
+            self.board.set_cell(x as usize, y as usize, BoardCell::Ship);
         }
+    }
 
-        game
+    pub fn reset(&mut self) {
+        self.amt_of_turns = 0;
+        self.amt_of_hits = 0;
+        self.amt_of_misses = 0;
+        self.ships_sunk = 0;
+        self.board.reset_cells();
+        self.ship_yard.clear_ships();
+        self.play();
     }
 
     pub fn is_end(&self) -> bool {
@@ -51,7 +61,7 @@ impl Game {
 
 impl ShootTrait for Game {
     /// Determines if a ship was hit.
-    fn shoot(&mut self, x: u32, y: u32) -> ShootTraitResult {
+    fn shoot(&mut self, x: u8, y: u8) -> ShootTraitResult {
         let shot_result = self.ship_yard.shoot(x, y);
 
         self.amt_of_turns += 1;
@@ -82,7 +92,8 @@ mod tests {
 
     #[test]
     fn test_new() {
-        let game = Game::new(8);
+        let mut game = Game::new();
+        game.play();
 
         assert_eq!(game.amt_of_hits, 0);
         assert_eq!(game.amt_of_misses, 0);
