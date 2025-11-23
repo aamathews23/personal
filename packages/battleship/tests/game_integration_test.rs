@@ -50,7 +50,7 @@ fn test_shoot_hit() {
     for y in 0..10 {
         for x in 0..10 {
             let index: usize = y * 10 + x;
-            if board[index] == BoardCell::Carrier.into() {
+            if board[index] == BoardCell::Carrier as u8 {
                 idx = index;
                 break;
             }
@@ -70,7 +70,7 @@ fn test_shoot_miss() {
     for y in 0..10 {
         for x in 0..10 {
             let index: usize = y * 10 + x;
-            if board[index] == BoardCell::Unknown.into() {
+            if board[index] == BoardCell::Unknown as u8 {
                 idx = index;
                 break;
             }
@@ -90,7 +90,7 @@ fn test_shoot_repeat() {
     for y in 0..10 {
         for x in 0..10 {
             let index: usize = y * 10 + x;
-            if board[index] == BoardCell::Unknown.into() {
+            if board[index] == BoardCell::Unknown as u8 {
                 idx = index;
                 break;
             }
@@ -110,11 +110,11 @@ fn test_is_end() {
     for y in 0..10 {
         for x in 0..10 {
             let index: usize = y * 10 + x;
-            if board[index] == BoardCell::Carrier.into()
-                || board[index] == BoardCell::Battleship.into()
-                || board[index] == BoardCell::Cruiser.into()
-                || board[index] == BoardCell::Submarine.into()
-                || board[index] == BoardCell::Destroyer.into()  {
+            if board[index] == BoardCell::Carrier as u8
+                || board[index] == BoardCell::Battleship as u8
+                || board[index] == BoardCell::Cruiser as u8
+                || board[index] == BoardCell::Submarine as u8
+                || board[index] == BoardCell::Destroyer as u8  {
                 ship_coords.push((x as u8, y as u8));
             }
         }

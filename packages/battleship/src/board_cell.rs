@@ -10,8 +10,8 @@ pub enum BoardCell {
     Carrier = 7,
 }
 
-impl From<u8> for BoardCell {
-    fn from(value: u8) -> Self {
+impl BoardCell {
+    pub fn from_u8(value: u8) -> Self {
         match value {
             1 => BoardCell::Miss,
             2 => BoardCell::Hit,
@@ -22,11 +22,5 @@ impl From<u8> for BoardCell {
             7 => BoardCell::Carrier,
             _ => BoardCell::Unknown
         }
-    }
-}
-
-impl Into<u8> for BoardCell {
-    fn into(self) -> u8 {
-        self as u8
     }
 }

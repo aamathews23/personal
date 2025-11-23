@@ -41,7 +41,7 @@ pub fn build() -> Vec<u8> {
                 }
             } else {
                 for y in s..e {
-                    let key = (y, static_idx);
+                    let key = (static_idx, y);
                     if coords_cache.contains(&key) {
                         ship_coords_cache.clear();
                         break;
@@ -55,7 +55,7 @@ pub fn build() -> Vec<u8> {
             }
         }
 
-        let ship_key: u8 = ship.into();
+        let ship_key = ship as u8;
 
         ship_coords.insert(ship_key, HashSet::new());
 
@@ -82,7 +82,7 @@ pub fn build() -> Vec<u8> {
 /// - Miss = 2
 /// - Repeat = 3
 pub fn shoot(idx: usize, board: &mut [u8]) -> u8 {
-    let cell: BoardCell = board[idx].into();
+    let cell: BoardCell = BoardCell::from_u8(board[idx]);
 
     let shot_result = match cell {
         BoardCell::Unknown => ShotResult::Miss,
@@ -91,19 +91,19 @@ pub fn shoot(idx: usize, board: &mut [u8]) -> u8 {
     };
 
     match shot_result {
-        ShotResult::Hit => board[idx] = BoardCell::Hit.into(),
-        ShotResult::Miss => board[idx] = BoardCell::Miss.into(),
+        ShotResult::Hit => board[idx] = BoardCell::Hit as u8,
+        ShotResult::Miss => board[idx] = BoardCell::Miss as u8,
         ShotResult::Repeat => {}
     }
 
-    shot_result.into()
+    shot_result as u8
 }
 
 /// Checks if the game has ended (all ships have been sunk)
 pub fn is_end(board: &[u8]) -> bool {
     let mut is_end = true;
     for cell in board {
-        let cell: BoardCell = (*cell).into();
+        let cell: BoardCell = BoardCell::from_u8(*cell);
         if cell != BoardCell::Unknown && cell != BoardCell::Hit && cell != BoardCell::Miss {
             is_end = false;
             break;
