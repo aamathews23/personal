@@ -4,23 +4,21 @@ use rand::{
     thread_rng
 };
 
-use crate::random_generator_trait::RandomGeneratorTrait;
-
-pub struct RandomGeneratorImpl {
+/// A simple random number generator
+pub struct RandomGenerator {
     rng: ThreadRng
 }
 
-impl RandomGeneratorImpl {
+impl RandomGenerator {
     pub fn new() -> Self {
         Self {
             rng: thread_rng()
         }
     }
-}
 
-impl RandomGeneratorTrait for RandomGeneratorImpl {
-    fn generate(&mut self, start: u32, end: u32) -> u32 {
-        let choices: Vec<u32> = (start..end).collect();
+    /// Generates a random number in the range [start, end)
+    pub fn generate(&mut self, start: u8, end: u8) -> u8 {
+        let choices: Vec<u8> = (start..end).collect();
 
 
         match choices.choose(&mut self.rng) {
@@ -36,21 +34,21 @@ mod tests {
 
     #[test]
     fn test_generate() {
-        let mut generator = RandomGeneratorImpl::new();
+        let mut generator = RandomGenerator::new();
         let outcome = generator.generate(0, 10);
         assert!(outcome > 0 && outcome <= 10);
     }
 
     #[test]
     fn test_generate_when_empty() {
-        let mut generator = RandomGeneratorImpl::new();
+        let mut generator = RandomGenerator::new();
         let outcome = generator.generate(0, 0);
         assert_eq!(outcome, 0);
     }
 
     #[test]
     fn test_generate_when_invalid() {
-        let mut generator = RandomGeneratorImpl::new();
+        let mut generator = RandomGenerator::new();
         let outcome = generator.generate(1, 0);
         assert_eq!(outcome, 0);
     }

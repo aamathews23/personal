@@ -2,67 +2,36 @@ mod utils;
 
 use wasm_bindgen::prelude::*;
 
-use battleship::{
-    board_cell::BoardCell,
-    game::Game,
-    shoot_trait::ShootTrait
-};
-
-/**
- * TODO: Add wasm bindgen tests
- * TODO: Add E2E Playwright tests
- * TODO: Refactor build and deploy pipeline
- */
-
-#[wasm_bindgen]
-pub struct BattleshipWeb {
-    game: Game
+/// Builds the battleship board by placing ships randomly.
+///
+/// @returns {Uint8Array} The battleship board
+#[wasm_bindgen(skip_jsdoc)]
+pub fn build_board() -> Vec<u8> {
+    utils::set_panic_hook();
+    battleship::utils::build()
 }
 
-#[wasm_bindgen]
-impl BattleshipWeb {
-    pub fn new() -> Self {
-        utils::set_panic_hook();
-        let game: Game = Game::new(8);
-
-        Self {
-            game
-        }
-    }
-
-    pub fn amt_of_turns(&self) -> u32 {
-        self.game.amt_of_turns
-    }
-
-    pub fn amt_of_hits(&self) -> u32 {
-        self.game.amt_of_hits
-    }
-
-    pub fn amt_of_misses(&self) -> u32 {
-        self.game.amt_of_misses
-    }
-
-    pub fn ships_sunk(&self) -> u32 {
-        self.game.ships_sunk
-    }
-
-    pub fn is_end(&self) -> bool {
-        self.game.is_end()
-    }
-
-    pub fn board(&self) -> *const BoardCell {
-        self.game.board.get_cells().as_ptr()
-    }
-
-    pub fn shoot(&mut self, idx: u32) {
-        let x = idx / 8;
-        let y = idx % 8;
-        self.game.shoot(x, y);
-    }
+/// Shoots at the given index on the board and returns the result
+///
+/// - Hit = 1
+/// - Miss = 2
+/// - Repeat = 3
+///
+/// @param {number} idx - The index to shoot at (0-99)
+/// @param {Uint8Array} board - The battleship board
+/// @returns {number} The result of the shot
+#[wasm_bindgen(skip_jsdoc)]
+pub fn shoot_ship(idx: usize, board: &mut [u8]) -> u8 {
+    utils::set_panic_hook();
+    battleship::utils::shoot(idx, board)
 }
 
-impl Default for BattleshipWeb {
-    fn default() -> Self {
-        Self::new()
-    }
+/// Checks if the game has ended (all ships have been sunk)
+///
+/// @param {Uint8Array} board - The battleship board
+/// @returns {boolean}
+#[wasm_bindgen]
+pub fn is_end_of_game(board: &[u8]) -> bool {
+    utils::set_panic_hook();
+    battleship::utils::is_end(board)
 }
