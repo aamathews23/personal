@@ -1,7 +1,6 @@
 mod utils;
 
 use wasm_bindgen::prelude::*;
-use battleship;
 
 /// Builds the battleship board by placing ships randomly.
 ///
