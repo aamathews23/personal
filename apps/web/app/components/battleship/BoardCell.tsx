@@ -1,13 +1,14 @@
+import { useBattleshipStore } from '@/stores/battleship';
 import { clsx } from 'clsx/lite';
-import { BoardCellVariant } from '@/types';
 
 export type BoardCellProps = {
   idx: number;
-  variant?: BoardCellVariant;
-  onClick?: () => void;
+  variant?: number;
 };
 
-export const BoardCell = ({ idx, variant = 'unknown', onClick }: BoardCellProps) => {
+export const BoardCell = ({ idx, variant = 0 }: BoardCellProps) => {
+  const shoot = useBattleshipStore((state) => state.shoot);
+
   const basic =
     'h-16 w-16 rounded-sm border-none transition-all duration-300 outline-none hover:cursor-pointer';
   const unknown = 'bg-blue-300 hover:bg-blue-500 focus:bg-blue-500';
@@ -18,24 +19,26 @@ export const BoardCell = ({ idx, variant = 'unknown', onClick }: BoardCellProps)
   let ariaLabel = 'Unknown.';
   let classes = clsx(basic, unknown);
   switch (variant) {
-    case 'miss':
+    case 1:
       ariaLabel = 'Miss...';
       classes = clsx(basic, miss);
       break;
-    case 'hit':
+    case 2:
       ariaLabel = 'Hit!';
       classes = clsx(basic, hit);
       break;
-    case 'ship':
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
       ariaLabel = 'Ship.';
       classes = clsx(basic, ship);
       break;
   }
 
   const handleOnClick = () => {
-    if (onClick) {
-      onClick();
-    }
+    shoot(idx);
   };
 
   return (
