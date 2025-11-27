@@ -1,7 +1,9 @@
+import { useEffect } from 'react';
 import type { MetaFunction } from '@remix-run/cloudflare';
-import { ClientOnly } from 'remix-utils/client-only';
+import init from '@aamathews23/battleship-web';
 import { Hero } from '@/components/Hero';
 import { Board } from '@/components/battleship/Board';
+import { useBattleshipStore } from '@/stores/battleship';
 
 export const meta: MetaFunction = () => {
   return [
@@ -10,14 +12,22 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-const Battleship = () => (
-  <main className="mx-auto my-0 flex w-full max-w-[1024px] flex-col items-center justify-center gap-8 px-4 py-8 md:px-8 lg:px-16">
-    <Hero
-      heading="Battleship"
-      description="Sink all the ships to win!"
-    />
-    <ClientOnly fallback={null}>{() => <Board />}</ClientOnly>
-  </main>
-);
+const Battleship = () => {
+  const build = useBattleshipStore((state) => state.build);
+
+  useEffect(() => {
+    init().then(() => build());
+  }, [build]);
+
+  return (
+    <main className="mx-auto my-0 flex w-full max-w-[1024px] flex-col items-center justify-center gap-8 px-4 py-8 md:px-8 lg:px-16">
+      <Hero
+        heading="Battleship"
+        description="Sink all the ships to win!"
+      />
+      <Board />
+    </main>
+  );
+};
 
 export default Battleship;

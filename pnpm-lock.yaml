@@ -15,8 +15,8 @@ importers:
   apps/web:
     dependencies:
       '@aamathews23/battleship-web':
-        specifier: 1.0.3
-        version: 1.0.3
+        specifier: 3.0.0
+        version: 3.0.0
       '@remix-run/cloudflare':
         specifier: ^2.17.1
         version: 2.17.1(@cloudflare/workers-types@4.20250816.0)(typescript@5.8.3)
@@ -152,8 +152,8 @@ importers:
 
 packages:
 
-  '@aamathews23/battleship-web@1.0.3':
-    resolution: {integrity: sha512-oldVs1VjbvJ027IBGx+1+ylT1WKC3XNIL+tTV14Ns9iSq20HUADifD/gm3OUAC322ideriqSjrGswholVsdYuQ==}
+  '@aamathews23/battleship-web@3.0.0':
+    resolution: {integrity: sha512-UMeHngl5PEFTyyPcsPARuOgjxWdBJ7o9z1wUI9xkqTsmX7YAZJkCik2ovlBzjJhD9sTW9/rTypKMxzea0enuhA==}
 
   '@adobe/css-tools@4.4.4':
     resolution: {integrity: sha512-Elp+iwUx5rN5+Y8xLt5/GRoG20WGoDCQ/1Fb+1LiGtvwbDavuSk0jhD/eZdckHAuzcDzccnkv+rEjyWfRx18gg==}
@@ -5389,7 +5389,7 @@ packages:
 
 snapshots:
 
-  '@aamathews23/battleship-web@1.0.3': {}
+  '@aamathews23/battleship-web@3.0.0': {}
 
   '@adobe/css-tools@4.4.4': {}
 
