@@ -17,14 +17,17 @@ export const BoardCell = ({ idx, variant = 0 }: BoardCellProps) => {
   const miss = 'bg-red-300';
 
   let ariaLabel = 'Unknown.';
+  let boardCellVariant = 'unknown';
   let classes = clsx(basic, unknown);
   switch (variant) {
     case 1:
       ariaLabel = 'Miss...';
+      boardCellVariant = 'miss';
       classes = clsx(basic, miss);
       break;
     case 2:
       ariaLabel = 'Hit!';
+      boardCellVariant = 'hit';
       classes = clsx(basic, hit);
       break;
     case 3:
@@ -33,6 +36,7 @@ export const BoardCell = ({ idx, variant = 0 }: BoardCellProps) => {
     case 6:
     case 7:
       ariaLabel = 'Ship.';
+      boardCellVariant = 'ship';
       classes = clsx(basic, ship);
       break;
   }
@@ -45,7 +49,7 @@ export const BoardCell = ({ idx, variant = 0 }: BoardCellProps) => {
     <button
       className={classes}
       aria-label={ariaLabel}
-      data-board-cell-variant={variant}
+      data-board-cell-variant={boardCellVariant}
       data-testid={`board-cell-${idx}`}
       onClick={handleOnClick}
     />
