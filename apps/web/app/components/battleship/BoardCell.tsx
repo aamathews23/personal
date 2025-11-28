@@ -7,6 +7,7 @@ export type BoardCellProps = {
 };
 
 export const BoardCell = ({ idx, variant = 0 }: BoardCellProps) => {
+  const isCellDebug = useBattleshipStore((state) => state.isCellDebug);
   const shoot = useBattleshipStore((state) => state.shoot);
 
   const basic =
@@ -35,9 +36,11 @@ export const BoardCell = ({ idx, variant = 0 }: BoardCellProps) => {
     case 5:
     case 6:
     case 7:
-      ariaLabel = 'Ship.';
-      boardCellVariant = 'ship';
-      classes = clsx(basic, ship);
+      if (isCellDebug) {
+        ariaLabel = 'Ship.';
+        boardCellVariant = 'ship';
+        classes = clsx(basic, ship);
+      }
       break;
   }
 

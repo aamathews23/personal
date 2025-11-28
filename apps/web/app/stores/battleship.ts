@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { build_board, shoot_ship, is_end_of_game } from '@aamathews23/battleship-web';
+import { CELL_DEBUG } from '@/utils/env';
 
 export type BattleshipStore = {
   board: number[];
@@ -7,6 +8,7 @@ export type BattleshipStore = {
   amtOfHits: number;
   amtOfMisses: number;
   isEnd: boolean;
+  isCellDebug: boolean;
   error?: string;
   build: () => void;
   shoot: (idx: number) => void;
@@ -19,6 +21,7 @@ export const useBattleshipStore = create<BattleshipStore>((set) => ({
   amtOfHits: 0,
   amtOfMisses: 0,
   isEnd: false,
+  isCellDebug: CELL_DEBUG === 1,
   build: () => set({ board: Array.from(build_board()) }),
   shoot: (idx: number) => {
     set((state) => {
