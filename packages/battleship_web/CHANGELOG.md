@@ -1,5 +1,11 @@
 # @aamathews23/battleship-web
 
+## 3.0.1
+
+### Patch Changes
+
+- 81514f5: Fixes a bug where ships would only be placed in the horizontal direction.
+
 ## 3.0.0
 
 ### Major Changes
