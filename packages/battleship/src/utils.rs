@@ -24,11 +24,11 @@ pub fn build() -> Vec<u8> {
         let mut ship_coords_cache = HashSet::new();
 
         while !is_valid {
-            let is_horizontal = generator.generate(0, 1) == 0;
+            let is_horizontal = generator.generate(0, 2) == 0;
 
-            let s = generator.generate(0, 10 - size);
+            let s = generator.generate(0, 11 - size);
             let e = s + size;
-            let static_idx = generator.generate(0, 10 - size);
+            let static_idx = generator.generate(0, 11 - size);
 
             if is_horizontal {
                 for x in s..e {
