@@ -20,7 +20,6 @@ impl RandomGenerator {
     pub fn generate(&mut self, start: u8, end: u8) -> u8 {
         let choices: Vec<u8> = (start..end).collect();
 
-
         match choices.choose(&mut self.rng) {
             Some(num) => *num,
             _ => 0
