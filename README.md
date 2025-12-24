@@ -1,40 +1,29 @@
-# Welcome to Remix!
+# welcome to my personal monorepo!
 
-- 📖 [Remix docs](https://remix.run/docs)
+This monorepo is a composition of multiple projects and packages that I've created for my personal use. There are projects from games to various tools I leverage daily.
 
-## Development
+## main technologies
 
-Run the dev server:
+- [pnpm](https://pnpm.io/) for package management and monorepo support
+- [Changesets](https://changesets.io/) for versioning and publishing
+- [Rust](https://www.rust-lang.org/) for WASM package development
+- [Remix](https://remix.run/) for frontend development
+- [Cloudflare](https://www.cloudflare.com/) for hosting
 
-```shellscript
-npm run dev
-```
+## roadmap
 
-## Deployment
+### in flight
 
-First, build your app for production:
+- The game of Battleship.
 
-```sh
-npm run build
-```
+### upcoming
 
-Then run the app in production mode:
+- Authentication and authorization via Discord.
+- Upgrade from Remix to React Router v7.
+- The game of Snake.
+- A tool for keeping track of my ingredients and recipes.
 
-```sh
-npm start
-```
+## links
 
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-- `build/server`
-- `build/client`
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
+- [View the site](https://aaronmathews.dev/)
+- [npm](https://www.npmjs.com/~aamathews23)
