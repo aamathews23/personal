@@ -1,8 +1,14 @@
 # battleship_web
 
-This is a WASM library for the Battleship game.
+This is a JS wrapper for my Battleship Rust engine.
 
-## Usage
+This package handles:
+- The initialization of the WASM engine.
+- The random placement of ships on the board.
+- Shooting the ships on the board.
+- Checking if the game has ended.
+
+## usage
 
 Install the package:
 ```sh
