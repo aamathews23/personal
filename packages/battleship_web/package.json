@@ -1,6 +1,6 @@
 {
   "name": "@aamathews23/battleship-web",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "The game of battleship, implemented in Rust, compiled to WASM, and distributed in JS / TS.",
   "keywords": [
     "battleship",

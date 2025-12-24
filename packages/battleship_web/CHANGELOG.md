@@ -1,5 +1,11 @@
 # @aamathews23/battleship-web
 
+## 3.0.2
+
+### Patch Changes
+
+- 4219ccd: Update the README to summarize what parts of the Battleship game are handled by the package.
+
 ## 3.0.1
 
 ### Patch Changes
