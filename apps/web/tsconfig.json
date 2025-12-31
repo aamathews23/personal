@@ -6,11 +6,12 @@
     "**/.server/**/*.ts",
     "**/.server/**/*.tsx",
     "**/.client/**/*.ts",
-    "**/.client/**/*.tsx"
+    "**/.client/**/*.tsx",
+    ".react-router/types/**/*"
   ],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
-    "types": ["vite/client", "jsdom", "@remix-run/cloudflare", "@cloudflare/workers-types"],
+    "types": ["vite/client", "jsdom", "@react-router/cloudflare", "@cloudflare/workers-types"],
     "isolatedModules": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",
@@ -27,6 +28,7 @@
       "@/*": ["./app/*"],
       "@styles/*": ["./styles/*"]
     },
+    "rootDirs": [".", "./.react-router/types"],
 
     // Vite takes care of building everything, not tsc.
     "noEmit": true

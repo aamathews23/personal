@@ -1,5 +1,6 @@
-# remix / node
+# react router / node
 node_modules
+.react-router/
 
 .cache
 build

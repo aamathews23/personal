@@ -1,4 +1,4 @@
-import type { MetaFunction } from '@remix-run/cloudflare';
+import type { MetaFunction } from 'react-router';
 import { Hero } from '@/components/Hero';
 import { ProjectCards } from '@/components/ProjectCards';
 

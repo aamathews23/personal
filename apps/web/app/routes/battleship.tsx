@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import type { MetaFunction } from '@remix-run/cloudflare';
+import type { MetaFunction } from 'react-router';
 import init from '@aamathews23/battleship-web';
 import { Hero } from '@/components/Hero';
 import { Board } from '@/components/battleship/Board';

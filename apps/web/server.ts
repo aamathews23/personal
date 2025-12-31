@@ -1,4 +1,5 @@
-import { createRequestHandler, type ServerBuild } from '@remix-run/cloudflare';
+import { createRequestHandler } from '@react-router/cloudflare';
+import { type ServerBuild } from 'react-router';
 
 import * as build from './build/server';
 import { getLoadContext } from './load-context';
