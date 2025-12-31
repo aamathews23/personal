@@ -1,6 +1,7 @@
 # react router / node
 node_modules
 .react-router/
+*.tsbuildinfo
 
 .cache
 build

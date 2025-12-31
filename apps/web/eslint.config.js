@@ -9,7 +9,7 @@ import vitestPlugin from '@vitest/eslint-plugin';
 
 export default tseslint.config(
   {
-    ignores: ['.wrangler', 'build', 'node_modules', 'server.ts'],
+    ignores: ['.wrangler', 'build', 'node_modules', '.react-router'],
   },
   eslint.configs.recommended,
   tseslint.configs.recommended,
@@ -26,7 +26,9 @@ export default tseslint.config(
         { name: 'NavLink', linkAttribute: 'to' },
       ],
       'import/resolver': {
-        typescript: {},
+        typescript: {
+          project: ['./tsconfig.cloudflare.json'],
+        },
       },
     },
   },
@@ -44,6 +46,7 @@ export default tseslint.config(
         },
         typescript: {
           alwaysTryTypes: true,
+          project: ['./tsconfig.cloudflare.json'],
         },
       },
     },
