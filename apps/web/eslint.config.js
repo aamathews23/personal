@@ -9,7 +9,15 @@ import vitestPlugin from '@vitest/eslint-plugin';
 
 export default tseslint.config(
   {
-    ignores: ['.wrangler', 'build', 'node_modules', '.react-router'],
+    ignores: [
+      '.wrangler',
+      'build',
+      'node_modules',
+      '.react-router',
+      'coverage',
+      'worker-configuration.d.ts',
+      '*.tsbuildinfo',
+    ],
   },
   eslint.configs.recommended,
   tseslint.configs.recommended,
@@ -51,9 +59,6 @@ export default tseslint.config(
       },
     },
   },
-  {
-    ...vitestPlugin.configs.recommended,
-    files: ['tests/*'],
-  },
+  vitestPlugin.configs.recommended,
   prettierRecommended,
 );
