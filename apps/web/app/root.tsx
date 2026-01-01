@@ -1,7 +1,5 @@
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
 import type { LinksFunction } from 'react-router';
-
-// import '@styles/global.css';
 import tailwind from '@styles/tailwind.css?url';
 
 export const links: LinksFunction = () => [

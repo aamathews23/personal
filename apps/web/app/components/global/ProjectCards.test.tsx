@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { ProjectCards, type ProjectCardsProps } from '@/components/ProjectCards';
+import { ProjectCards, type ProjectCardsProps } from '@/components/global/ProjectCards';
 import { createRoutesStub } from 'react-router';
 
 const mockProps: ProjectCardsProps = {

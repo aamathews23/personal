@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { Buzzy } from '@/components/Buzzy';
+import { Buzzy } from '@/components/global/Buzzy';
 
 describe('Buzzy', () => {
   it('mounts', () => {
