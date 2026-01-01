@@ -21,6 +21,6 @@ export default defineConfig({
       reportOnFailure: true,
     },
     globals: true,
-    setupFiles: './tests/setup.ts',
+    setupFiles: './vitest.setup.ts',
   },
 });

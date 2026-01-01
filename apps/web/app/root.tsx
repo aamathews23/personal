@@ -1,7 +1,5 @@
-import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
-import type { LinksFunction } from '@remix-run/cloudflare';
-
-// import '@styles/global.css';
+import { Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
+import type { LinksFunction } from 'react-router';
 import tailwind from '@styles/tailwind.css?url';
 
 export const links: LinksFunction = () => [

@@ -1,4 +1,4 @@
-import { Buzzy } from './Buzzy';
+import { Buzzy } from '@/components/global/Buzzy';
 
 export type HeroProps = {
   preheading?: string;

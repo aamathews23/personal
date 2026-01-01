@@ -1,0 +1,30 @@
+{
+	"extends": "./tsconfig.json",
+	"include": [
+		".react-router/types/**/*",
+		"app/**/*",
+		"app/**/.server/**/*",
+		"app/**/.client/**/*",
+		"workers/**/*",
+		"worker-configuration.d.ts",
+    "vitest.setup.ts"
+	],
+	"compilerOptions": {
+		"composite": true,
+		"strict": true,
+		"lib": ["DOM", "DOM.Iterable", "ES2022"],
+		"types": ["vite/client", "vitest/globals", "@testing-library/jest-dom/vitest"],
+		"target": "ES2022",
+		"module": "ES2022",
+		"moduleResolution": "bundler",
+		"jsx": "react-jsx",
+		"baseUrl": ".",
+		"rootDirs": [".", "./.react-router/types"],
+		"paths": {
+			"@/*": ["./app/*"],
+      "@styles/*": ["./styles/*"]
+		},
+		"esModuleInterop": true,
+		"resolveJsonModule": true
+	}
+}

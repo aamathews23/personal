@@ -1,6 +1,6 @@
-import type { MetaFunction } from '@remix-run/cloudflare';
-import { Hero } from '@/components/Hero';
-import { ProjectCards } from '@/components/ProjectCards';
+import type { MetaFunction } from 'react-router';
+import { Hero } from '@/components/global/Hero';
+import { ProjectCards } from '@/components/global/ProjectCards';
 
 const projects = [
   {

@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { ProjectCards, ProjectCardsProps } from '../../app/components/ProjectCards';
-import { createRemixStub } from '@remix-run/testing';
+import { ProjectCards, type ProjectCardsProps } from '@/components/global/ProjectCards';
+import { createRoutesStub } from 'react-router';
 
 const mockProps: ProjectCardsProps = {
   heading: 'My Projects',
@@ -22,7 +22,7 @@ const mockProps: ProjectCardsProps = {
 };
 
 const createRemixStubWithProps = (props = mockProps) => {
-  const RemixStub = createRemixStub([
+  const RemixStub = createRoutesStub([
     {
       path: '/',
       Component: () => <ProjectCards {...props} />,
@@ -112,7 +112,7 @@ describe('ProjectCards', () => {
   });
 
   test('navigates to correct route when link is clicked', async () => {
-    const RemixStub = createRemixStub([
+    const RemixStub = createRoutesStub([
       {
         path: '/',
         Component: () => <ProjectCards {...mockProps} />,

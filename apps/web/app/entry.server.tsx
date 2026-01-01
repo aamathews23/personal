@@ -1,5 +1,5 @@
-import type { EntryContext } from '@remix-run/cloudflare';
-import { RemixServer } from '@remix-run/react';
+import type { EntryContext } from 'react-router';
+import { ServerRouter } from 'react-router';
 import { isbot } from 'isbot';
 import { renderToReadableStream } from 'react-dom/server';
 
@@ -9,16 +9,15 @@ export default async function handleRequest(
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
-  remixContext: EntryContext,
+  reactRouterContext: EntryContext,
 ) {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), ABORT_DELAY);
 
   const body = await renderToReadableStream(
-    <RemixServer
-      context={remixContext}
+    <ServerRouter
+      context={reactRouterContext}
       url={request.url}
-      abortDelay={ABORT_DELAY}
     />,
     {
       signal: controller.signal,

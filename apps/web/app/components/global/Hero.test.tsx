@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest';
 import { render } from '@testing-library/react';
-import { Hero, type HeroProps } from '@/components/Hero';
+import { Hero, type HeroProps } from '@/components/global/Hero';
 
 const preheading = 'preheading';
 const heading = 'heading';
