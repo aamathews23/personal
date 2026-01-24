@@ -36,7 +36,7 @@ describe('<BoardCell />', () => {
     });
 
     // TODO: Add back with proper mocking of the Zustand store, #53
-    test.skip('renders the ship variant', () => {
+    test.todo('renders the ship variant', () => {
       renderComponent(3);
       const button = screen.getByRole('button');
       expect(button).toHaveAttribute('data-board-cell-variant', 'ship');
@@ -45,7 +45,7 @@ describe('<BoardCell />', () => {
   });
 
   // TODO: Add back with proper mocking of the Zustand store, #53
-  describe.skip('functionality', () => {
+  describe.todo('functionality', () => {
     test('click event handler fires when button is clicked', () => {
       renderComponent();
       const button = screen.getByRole('button');

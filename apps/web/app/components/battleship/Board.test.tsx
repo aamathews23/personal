@@ -16,7 +16,7 @@ vi.mock('@/utils/battleship', () => ({
   getGameBoard: vi.fn(() => new Array(64).fill('unknown')),
 }));
 
-describe.skip('<Board />', () => {
+describe.todo('<Board />', () => {
   const store = useBattleshipStore.getState();
 
   beforeEach(() => {
