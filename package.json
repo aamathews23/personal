@@ -13,6 +13,6 @@
     "ci:publish": "pnpm publish --recursive --access public"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.29.8"
+    "@changesets/cli": "2.29.8"
   }
 }
