@@ -19,7 +19,6 @@ const Battleship = () => {
   const build = useBattleshipStore((state) => state.build);
 
   useEffect(() => {
-    setIsLoading(true);
     init()
       .then(() => build())
       .catch(() => setIsError(true))
