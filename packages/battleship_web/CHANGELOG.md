@@ -1,5 +1,11 @@
 # @aamathews23/battleship-web
 
+## 3.0.3
+
+### Patch Changes
+
+- bf38ff3: Update `rimraf` version.
+
 ## 3.0.2
 
 ### Patch Changes
