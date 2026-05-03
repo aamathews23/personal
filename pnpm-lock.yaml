@@ -15,8 +15,8 @@ importers:
   apps/web:
     dependencies:
       '@aamathews23/battleship-web':
-        specifier: 3.0.1
-        version: 3.0.1
+        specifier: 3.0.3
+        version: 3.0.3
       class-variance-authority:
         specifier: 0.7.1
         version: 0.7.1
@@ -158,8 +158,8 @@ importers:
 
 packages:
 
-  '@aamathews23/battleship-web@3.0.1':
-    resolution: {integrity: sha512-QZCQEpfnahbZrPNg/BGnN4swdYPRxv+MhPV7snSjoWUC/RCcP1dPjapDFdakH+lGEOqjR3iK3rqPxw7Gaq73MQ==}
+  '@aamathews23/battleship-web@3.0.3':
+    resolution: {integrity: sha512-QitOhI15ZSTomk1Qr1Auh/5yqo06nQWpn1bEZeol7Xwa45EbVdtfubytlKA9iCCiL6TlTd9grsw0xulsfJ1rxw==}
 
   '@adobe/css-tools@4.4.4':
     resolution: {integrity: sha512-Elp+iwUx5rN5+Y8xLt5/GRoG20WGoDCQ/1Fb+1LiGtvwbDavuSk0jhD/eZdckHAuzcDzccnkv+rEjyWfRx18gg==}
@@ -3947,7 +3947,7 @@ packages:
 
 snapshots:
 
-  '@aamathews23/battleship-web@3.0.1': {}
+  '@aamathews23/battleship-web@3.0.3': {}
 
   '@adobe/css-tools@4.4.4': {}
 
