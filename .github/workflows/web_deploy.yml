@@ -23,7 +23,7 @@ jobs:
           node-version: 22.14.0
           cache: 'pnpm'
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile --ignore-scripts
       - name: Build
         run: pnpm --filter web build
       - name: Deploy
