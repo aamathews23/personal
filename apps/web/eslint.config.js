@@ -6,8 +6,9 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import importPlugin from 'eslint-plugin-import';
 import vitestPlugin from '@vitest/eslint-plugin';
+import { defineConfig } from 'eslint/config';
 
-export default tseslint.config(
+export default defineConfig(
   {
     ignores: [
       '.wrangler',
@@ -26,7 +27,7 @@ export default tseslint.config(
     ...reactPlugin.configs.flat.recommended,
     settings: {
       react: {
-        version: 'detect',
+        version: '19',
       },
       formComponents: ['Form'],
       linkComponents: [
@@ -41,7 +42,7 @@ export default tseslint.config(
     },
   },
   reactPlugin.configs.flat['jsx-runtime'],
-  reactHooks.configs['recommended-latest'],
+  reactHooks.configs.flat.recommended,
   jsxA11y.flatConfigs.recommended,
   {
     files: ['**/*.{ts,tsx}'],
@@ -61,4 +62,9 @@ export default tseslint.config(
   },
   vitestPlugin.configs.recommended,
   prettierRecommended,
+  {
+    rules: {
+      'prettier/prettier': 2,
+    },
+  },
 );
