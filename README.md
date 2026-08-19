@@ -7,21 +7,25 @@ This monorepo is a composition of multiple projects and packages that I've creat
 - [pnpm](https://pnpm.io/) for package management and monorepo support
 - [Changesets](https://changesets.io/) for versioning and publishing
 - [Rust](https://www.rust-lang.org/) for WASM package development
-- [Remix](https://remix.run/) for frontend development
+- [React Router](https://reactrouter.com/) for frontend development
 - [Cloudflare](https://www.cloudflare.com/) for hosting
 
 ## roadmap
 
-### in flight
+### completed
 
 - The game of Battleship.
+
+### in flight
+
+- The game of Snake.
+- Pizza Admin.
 
 ### upcoming
 
 - Authentication and authorization via Discord.
-- Upgrade from Remix to React Router v7.
-- The game of Snake.
-- A tool for keeping track of my ingredients and recipes.
+- A sample GraphQL API.
+- Upgrade to React Router v8.
 
 ## links
 
